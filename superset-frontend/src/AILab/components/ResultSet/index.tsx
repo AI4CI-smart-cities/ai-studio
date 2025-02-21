@@ -547,14 +547,14 @@ const ResultSet = ({
   if (showSql) {
     sql = (
       <HighlightedSql
-        sql={query.sql}
+        python={query.sql}
         {...(showSqlInline && { maxLines: 1, maxWidth: 60 })}
       />
     );
   }
 
   if (query.state === QueryState.Stopped) {
-    return <Alert type="warning" message={t('Query was stopped')} />;
+    return <Alert type="warning" message={t('Model run was stopped')} />;
   }
 
   if (query.state === QueryState.Failed) {

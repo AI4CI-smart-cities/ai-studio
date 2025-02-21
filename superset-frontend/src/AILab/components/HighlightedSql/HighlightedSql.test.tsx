@@ -24,21 +24,21 @@ import { fireEvent, render } from 'spec/helpers/testing-library';
 const sql =
   "SELECT * FROM test WHERE something='fkldasjfklajdslfkjadlskfjkldasjfkladsjfkdjsa'";
 test('renders HighlightedSql component with sql prop', () => {
-  expect(isValidElement(<HighlightedSql sql={sql} />)).toBe(true);
+  expect(isValidElement(<HighlightedSql python={sql} />)).toBe(true);
 });
 test('renders a ModalTrigger component', () => {
-  const { getByTestId } = render(<HighlightedSql sql={sql} />);
+  const { getByTestId } = render(<HighlightedSql python={sql} />);
   expect(getByTestId('span-modal-trigger')).toBeInTheDocument();
 });
 test('renders a ModalTrigger component with shrink prop and maxWidth prop set to 20', () => {
   const { getByTestId } = render(
-    <HighlightedSql sql={sql} shrink maxWidth={20} />,
+    <HighlightedSql python={sql} shrink maxWidth={20} />,
   );
   expect(getByTestId('span-modal-trigger')).toBeInTheDocument();
 });
 test('renders two code elements in modal when rawSql prop is provided', () => {
   const { getByRole, queryByRole, getByTestId } = render(
-    <HighlightedSql sql={sql} rawSql="SELECT * FORM foo" shrink maxWidth={5} />,
+    <HighlightedSql python={sql} rawSql="SELECT * FORM foo" shrink maxWidth={5} />,
   );
   expect(queryByRole('dialog')).not.toBeInTheDocument();
   fireEvent.click(getByTestId('span-modal-trigger'));

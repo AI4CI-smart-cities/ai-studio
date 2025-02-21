@@ -25,8 +25,8 @@ export type LocationState = {
   requestedQuery?: Record<string, any>;
 };
 
-export const aILocationContext = createContext<LocationState>({});
-const { Provider } = aILocationContext;
+export const locationContext = createContext<LocationState>({});
+const { Provider } = locationContext;
 
 const EMPTY_STATE: LocationState = {};
 
@@ -35,4 +35,4 @@ export const LocationProvider: FC = ({ children }: { children: ReactNode }) => {
   return <Provider value={location.state || EMPTY_STATE}>{children}</Provider>;
 };
 
-export const useLocationState = () => useContext(aILocationContext);
+export const useLocationState = () => useContext(locationContext);

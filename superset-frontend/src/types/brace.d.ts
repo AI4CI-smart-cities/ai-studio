@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+declare module 'brace/mode/python';
 declare module 'brace/mode/sql';
 declare module 'brace/mode/markdown';
 declare module 'brace/mode/json';

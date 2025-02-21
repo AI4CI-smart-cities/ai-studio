@@ -284,7 +284,7 @@ const QueryTable = ({
         q.sql = (
           <Card css={[StaticPosition]}>
             <HighlightedSql
-              sql={sql}
+              python={sql}
               rawSql={q.executedSql}
               shrink
               maxWidth={60}

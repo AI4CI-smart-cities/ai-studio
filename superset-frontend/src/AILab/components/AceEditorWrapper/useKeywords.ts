@@ -21,7 +21,8 @@ import { useSelector, useDispatch, shallowEqual, useStore } from 'react-redux';
 import { getExtensionsRegistry, t } from '@superset-ui/core';
 
 import { Editor } from 'src/components/AsyncAceEditor';
-import sqlKeywords from 'src/AILab/utils/sqlKeywords';
+// import sqlKeywords from 'src/AILab/utils/sqlKeywords';
+import pyKeywords from 'src/AILab/utils/pyKeywords';
 import { addTable, addDangerToast } from 'src/AILab/actions/sqlLab';
 import {
   SCHEMA_AUTOCOMPLETE_SCORE,
@@ -46,7 +47,8 @@ type Params = {
   schema?: string;
 };
 
-const EMPTY_LIST = [] as typeof sqlKeywords;
+// const EMPTY_LIST = [] as typeof sqlKeywords;
+const EMPTY_LIST = [] as typeof pyKeywords;
 
 const { useQueryState: useSchemasQueryState } = schemaEndpoints.schemas;
 const { useQueryState: useTablesQueryState } = tableEndpoints.tables;
@@ -225,7 +227,8 @@ export function useKeywords(
         .concat(schemaKeywords)
         .concat(tableKeywords)
         .concat(functionKeywords)
-        .concat(sqlKeywords)
+//         .concat(sqlKeywords)
+        .concat(pyKeywords)
         .concat(customKeywords ?? []),
     [
       schemaKeywords,

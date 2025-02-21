@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 import { forwardRef, useEffect, ComponentType } from 'react';
 
 import type {
@@ -24,6 +25,7 @@ import type {
   Position,
   TextMode as OrigTextMode,
 } from 'brace';
+
 import type AceEditor from 'react-ace';
 import type { IAceEditorProps } from 'react-ace';
 
@@ -69,6 +71,7 @@ export interface AceCompleterKeyword extends AceCompleterKeywordData {
  */
 const aceModuleLoaders = {
   'mode/sql': () => import('brace/mode/sql'),
+  'mode/python': () => import('brace/mode/python'),
   'mode/markdown': () => import('brace/mode/markdown'),
   'mode/css': () => import('brace/mode/css'),
   'mode/json': () => import('brace/mode/json'),
@@ -87,7 +90,7 @@ export type AsyncAceEditorProps = IAceEditorProps & {
   keywords?: AceCompleterKeyword[];
 };
 
-export type AceEditorMode = 'sql';
+export type AceEditorMode = 'sql' | 'python';
 export type AceEditorTheme = 'textmate' | 'github';
 export type AsyncAceEditorOptions = {
   defaultMode?: AceEditorMode;

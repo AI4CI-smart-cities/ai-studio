@@ -17,12 +17,13 @@
  * under the License.
  */
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/light';
-import sql from 'react-syntax-highlighter/dist/cjs/languages/hljs/sql';
+// import sql from 'react-syntax-highlighter/dist/cjs/languages/hljs/sql';
+import python from 'react-syntax-highlighter/dist/cjs/languages/hljs/python';
 import github from 'react-syntax-highlighter/dist/cjs/styles/hljs/github';
 import { IconTooltip } from 'src/components/IconTooltip';
 import ModalTrigger from 'src/components/ModalTrigger';
 
-SyntaxHighlighter.registerLanguage('sql', sql);
+SyntaxHighlighter.registerLanguage('python', python);
 
 interface ShowSQLProps {
   sql: string;
@@ -50,7 +51,7 @@ export default function ShowSQL({
       }
       modalBody={
         <div>
-          <SyntaxHighlighter language="sql" style={github}>
+          <SyntaxHighlighter language="python" style={github}>
             {sqlString}
           </SyntaxHighlighter>
         </div>

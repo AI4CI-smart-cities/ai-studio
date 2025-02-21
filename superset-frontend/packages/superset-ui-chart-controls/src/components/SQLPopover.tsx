@@ -41,6 +41,7 @@ export const SQLPopover = (props: PopoverProps & { sqlExpression: string }) => {
     Promise.all([
       import('react-ace'),
       import('ace-builds/src-min-noconflict/mode-sql'),
+      import('ace-builds/src-min-noconflict/mode-python'),
     ]).then(([reactAceModule]) => {
       setAceEditor(() => reactAceModule.default);
     });

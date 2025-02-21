@@ -17,15 +17,16 @@
  * under the License.
  */
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/light';
-import sql from 'react-syntax-highlighter/dist/cjs/languages/hljs/sql';
+// import sql from 'react-syntax-highlighter/dist/cjs/languages/hljs/sql';
+import python from 'react-syntax-highlighter/dist/cjs/languages/hljs/python';
 import github from 'react-syntax-highlighter/dist/cjs/styles/hljs/github';
 import { t } from '@superset-ui/core';
 import ModalTrigger from 'src/components/ModalTrigger';
 
-SyntaxHighlighter.registerLanguage('sql', sql);
+SyntaxHighlighter.registerLanguage('python', python);
 
 export interface HighlightedSqlProps {
-  sql: string;
+  python: string;
   rawSql?: string;
   maxWidth?: number;
   maxLines?: number;
@@ -34,18 +35,18 @@ export interface HighlightedSqlProps {
 
 interface HighlightedSqlModalTypes {
   rawSql?: string;
-  sql: string;
+  python: string;
 }
 
 interface TriggerNodeProps {
   shrink: boolean;
-  sql: string;
+  python: string;
   maxLines: number;
   maxWidth: number;
 }
 
-const shrinkSql = (sql: string, maxLines: number, maxWidth: number) => {
-  const ssql = sql || '';
+const shrinkSql = (python: string, maxLines: number, maxWidth: number) => {
+  const ssql = python || '';
   let lines = ssql.split('\n');
   if (lines.length >= maxLines) {
     lines = lines.slice(0, maxLines);
@@ -61,25 +62,25 @@ const shrinkSql = (sql: string, maxLines: number, maxWidth: number) => {
     .join('\n');
 };
 
-function TriggerNode({ shrink, sql, maxLines, maxWidth }: TriggerNodeProps) {
+function TriggerNode({ shrink, python, maxLines, maxWidth }: TriggerNodeProps) {
   return (
-    <SyntaxHighlighter language="sql" style={github}>
-      {shrink ? shrinkSql(sql, maxLines, maxWidth) : sql}
+    <SyntaxHighlighter language="python" style={github}>
+      {shrink ? shrinkSql(python, maxLines, maxWidth) : python}
     </SyntaxHighlighter>
   );
 }
 
-function HighlightSqlModal({ rawSql, sql }: HighlightedSqlModalTypes) {
+function HighlightSqlModal({ rawSql, python }: HighlightedSqlModalTypes) {
   return (
     <div>
-      <h4>{t('Source SQL')}</h4>
-      <SyntaxHighlighter language="sql" style={github}>
-        {sql}
+      <h4>{t('Source Python code')}</h4>
+      <SyntaxHighlighter language="python" style={github}>
+        {python}
       </SyntaxHighlighter>
-      {rawSql && rawSql !== sql && (
+      {rawSql && rawSql !== python && (
         <div>
-          <h4>{t('Executed SQL')}</h4>
-          <SyntaxHighlighter language="sql" style={github}>
+          <h4>{t('Executed Python code')}</h4>
+          <SyntaxHighlighter language="python" style={github}>
             {rawSql}
           </SyntaxHighlighter>
         </div>
@@ -89,7 +90,7 @@ function HighlightSqlModal({ rawSql, sql }: HighlightedSqlModalTypes) {
 }
 
 function HighlightedSql({
-  sql,
+  python,
   rawSql,
   maxWidth = 50,
   maxLines = 5,
@@ -97,12 +98,12 @@ function HighlightedSql({
 }: HighlightedSqlProps) {
   return (
     <ModalTrigger
-      modalTitle={t('SQL')}
-      modalBody={<HighlightSqlModal rawSql={rawSql} sql={sql} />}
+      modalTitle={t('Python code')}
+      modalBody={<HighlightSqlModal rawSql={rawSql} python={python} />}
       triggerNode={
         <TriggerNode
           shrink={shrink}
-          sql={sql}
+          python={python}
           maxLines={maxLines}
           maxWidth={maxWidth}
         />

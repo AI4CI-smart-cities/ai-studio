@@ -24,7 +24,13 @@ import { Global } from '@emotion/react';
 
 import { SQL_EDITOR_LEFTBAR_WIDTH } from 'src/AILab/constants';
 import { queryEditorSetSelectedText } from 'src/AILab/actions/sqlLab';
-import { FullSQLEditor as AceEditor } from 'src/components/AsyncAceEditor';
+
+// modified by Adham - Feb 21, 2025
+import {
+  FullSQLEditor as AceEditor,
+  type AceEditorMode,
+} from 'src/components/AsyncAceEditor'; // Import AceEditorMode
+
 import type { KeyboardShortcut } from 'src/AILab/components/KeyboardShortcutButton';
 import useQueryEditor from 'src/AILab/hooks/useQueryEditor';
 import { SqlLabRootState, type CursorPosition } from 'src/AILab/types';
@@ -45,6 +51,7 @@ type AceEditorWrapperProps = {
   queryEditorId: string;
   onCursorPositionChange: (position: CursorPosition) => void;
   height: string;
+  mode?: AceEditorMode; // added by Adham - Feb 21, 2025
   hotkeys: HotKey[];
 };
 
@@ -68,6 +75,7 @@ const AceEditorWrapper = ({
   onCursorPositionChange,
   height,
   hotkeys,
+  mode, // added by Adham - Feb 21, 2025
 }: AceEditorWrapperProps) => {
   const dispatch = useDispatch();
   const queryEditor = useQueryEditor(queryEditorId, [
@@ -219,6 +227,7 @@ const AceEditorWrapper = ({
         height={height}
         onChange={onChangeText}
         width="100%"
+        mode={mode} // added by Adham - Feb 21, 2025
         editorProps={{ $blockScrolling: true }}
         enableLiveAutocompletion={autocomplete}
         value={sql}

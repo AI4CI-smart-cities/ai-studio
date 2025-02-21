@@ -733,7 +733,7 @@ const SqlEditor: FC<Props> = ({
           </Menu.Item>
         )}
         <Menu.Item onClick={() => formatCurrentQuery()}>
-          {t('Format SQL')}
+          {t('Format Python code')}
         </Menu.Item>
         {!isEmpty(scheduledQueriesConf) && (
           <Menu.Item>
@@ -916,6 +916,7 @@ const SqlEditor: FC<Props> = ({
               onCursorPositionChange={handleCursorPositionChange}
               height={`${aceEditorHeight}px`}
               hotkeys={hotkeys}
+              mode="sql" // added by Adham - Feb 21, 2025
             />
           )}
           {renderEditorBottomBar(showEmptyState)}

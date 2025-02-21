@@ -29,7 +29,7 @@ import App from 'src/AILab/components/App'; // changed from SqlLab to AILab
 import Loading from 'src/components/Loading';
 import EditorAutoSync from 'src/AILab/components/EditorAutoSync'; // changed from SqlLab to AILab
 import useEffectEvent from 'src/hooks/useEffectEvent';
-import { LocationProvider } from './AILocationContext';
+import { LocationProvider } from './LocationContext';
 
 export default function SqlLab() {
   const lastInitializedAt = useSelector<SqlLabRootState, number>(

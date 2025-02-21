@@ -43,6 +43,8 @@ import { store } from 'src/views/store';
 import { RootContextProviders } from './RootContextProviders';
 import { ScrollToTop } from './ScrollToTop';
 
+import AILabPage  from 'src/pages/AILab';
+
 setupApp();
 setupPlugins();
 setupExtensions();

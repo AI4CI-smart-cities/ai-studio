@@ -34,6 +34,9 @@ export const MainNavigation = (args: any) => (
     <Menu.Item>
       <a href="/">Datasets</a>
     </Menu.Item>
+    <Menu.Item>
+        <a href="/">AI Models</a>
+     </Menu.Item>
   </MainNav>
 );
 
@@ -42,6 +45,7 @@ export const InteractiveMenu = (args: any) => (
     <Menu.Item>Dashboards</Menu.Item>
     <Menu.Item>Charts</Menu.Item>
     <Menu.Item>Datasets</Menu.Item>
+    <Menu.Item>AI Models</Menu.Item>
   </Menu>
 );
 

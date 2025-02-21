@@ -123,6 +123,13 @@ const RowLevelSecurityList = lazy(
     ),
 );
 
+
+//  Change start - 13.02.2025
+const AILab = lazy(() =>
+  import(/* webpackChunkName: "RowLevelSecurityList" */ 'src/pages/AILab').then(module => ({ default: module.default }))
+);
+// Change end - 13.02.2025
+
 type Routes = {
   path: string;
   Component: ComponentType;
@@ -225,6 +232,12 @@ export const routes: Routes = [
     path: '/sqllab/',
     Component: SqlLab,
   },
+  // Change start - 13.02.2025
+  {
+    path: '/ailabview/ailab/',
+    Component: AILab,
+  },
+  // Change end - 13.02.2025
 ];
 
 if (isFeatureEnabled(FeatureFlag.TaggingSystem)) {

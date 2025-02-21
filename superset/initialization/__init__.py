@@ -114,7 +114,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
 
         celery_app.Task = AppContextTask
 
-    def init_views(self) -> None:
+    def init_views(self, SqllabView=None) -> None:
         #
         # We're doing local imports, as several of them import
         # models which in turn try to import
@@ -183,6 +183,11 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         from superset.views.sqllab import SqllabView
         from superset.views.tags import TagModelView, TagView
         from superset.views.users.api import CurrentUserRestApi, UserRestApi
+
+        # Start - custom imports - Adham Enaya - 10.02.2025
+        from superset.views.ai_lab.views import AIlabView
+
+        # End - custom imports - Adham Enaya - 10.02.2025
 
         set_app_error_handlers(self.superset_app)
 
@@ -285,10 +290,17 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             category_label=__("Manage"),
             category_icon="",
         )
+        # Start - custom views - Adham Enaya - 13.02.2025
+        appbuilder.add_view(
+            AIlabView,
+            "AI Lab",
+            label=__("AI Lab"),
+            icon="fa-flask",
+            category="AI Lab",
+            category_label=__("AI Lab"),
+        )
+        # End - custom views - Adham Enaya - 13.02.2025
 
-        #
-        # Setup views with no menu
-        #
         appbuilder.add_view_no_menu(Api)
         appbuilder.add_view_no_menu(Dashboard)
         appbuilder.add_view_no_menu(Datasource)
@@ -306,9 +318,20 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view_no_menu(TagView)
         appbuilder.add_view_no_menu(ReportView)
 
-        #
-        # Add links
-        #
+        # Start - custom views - Adham Enaya - 13.02.2025
+        appbuilder.add_view_no_menu(AIlabView)
+        # End - custom views - Adham Enaya - 13.02.2025
+
+        # appbuilder.add_link(
+        #     "AI Lab",
+        #     label=__("AI Lab"),
+        #     href="/ailab/",
+        #     category_icon="fa-flask",
+        #     icon="fa-flask",
+        #     category="AI Lab",
+        #     category_label=__("AI Lab"),  # Corrected this part to match the category
+        # )
+
         appbuilder.add_link(
             "SQL Editor",
             label=__("SQL Lab"),

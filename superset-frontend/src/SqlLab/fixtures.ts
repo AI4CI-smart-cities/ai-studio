@@ -499,7 +499,7 @@ export const stoppedQuery = {
   sqlEditorId: 'rJaf5u9WZ',
   startDttm: 1497400851936,
   state: QueryState.Stopped,
-  tab: 'Untitled Query 2',
+  tab: 'Untitled Model Run 2',
   tempTable: '',
 };
 
@@ -518,7 +518,7 @@ export const failedQueryWithErrorMessage = {
   sqlEditorId: 'rJaf5u9WZ',
   startDttm: 1497400851936,
   state: QueryState.Failed,
-  tab: 'Untitled Query 2',
+  tab: 'Untitled Model Run 2',
   tempTable: '',
 };
 

@@ -23,6 +23,7 @@ ARG PY_VER=3.11-slim-bookworm
 # If BUILDPLATFORM is null, set it to 'amd64' (or leave as is otherwise).
 ARG BUILDPLATFORM=${BUILDPLATFORM:-amd64}
 
+
 ######################################################################
 # superset-node-ci used as a base for building frontend assets and CI
 ######################################################################
@@ -31,6 +32,11 @@ ARG BUILD_TRANSLATIONS="false" # Include translations in the final build
 ENV BUILD_TRANSLATIONS=${BUILD_TRANSLATIONS}
 ARG DEV_MODE="false"           # Skip frontend build in dev mode
 ENV DEV_MODE=${DEV_MODE}
+
+
+
+ENV SUPERSET_SECRET_KEY=IMHjFg-EHsOVhq89ftJMZLuKTR-1pVTrEta0iMXg4NE
+ENV SECRET_KEY=IMHjFg-EHsOVhq89ftJMZLuKTR-1pVTrEta0iMXg4NE
 
 COPY docker/ /app/docker/
 # Arguments for build configuration
@@ -93,7 +99,6 @@ RUN if [ "$BUILD_TRANSLATIONS" = "true" ]; then \
     fi; \
     rm -rf /app/superset/translations/*/*/*.po; \
     rm -rf /app/superset/translations/*/*/*.mo;
-
 
 ######################################################################
 # Base python layer
@@ -245,6 +250,8 @@ RUN --mount=type=cache,target=${SUPERSET_HOME}/.cache/uv \
 RUN uv pip install .[postgres]
 RUN python -m compileall /app/superset
 
+
+
 USER superset
 
 ######################################################################
@@ -255,3 +262,5 @@ USER root
 RUN uv pip install .[postgres]
 USER superset
 CMD ["/app/docker/entrypoints/docker-ci.sh"]
+
+

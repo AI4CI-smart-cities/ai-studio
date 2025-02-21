@@ -39,4 +39,5 @@ __all__ = [
     "views",
     "sql_lab",
     "tags",
+    "ai_model_view",
 ]

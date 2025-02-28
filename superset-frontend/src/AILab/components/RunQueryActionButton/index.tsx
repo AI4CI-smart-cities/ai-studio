@@ -71,6 +71,8 @@ const onClick = (
 
   logAction(eventName, { shortcut: false });
   if (shouldShowStopButton) return stopQuery();
+
+
   if (allowAsync) {
     return runQuery(true);
   }
@@ -141,7 +143,7 @@ const RunQueryActionButton = ({
           (!isDisabled &&
             (shouldShowStopBtn
               ? stopButtonTooltipText
-              : t('Run query (Ctrl + Return)'))) as string
+              : t('Run Model (Ctrl + Return)'))) as string
         }
         cta
         {...(overlayCreateAsMenu

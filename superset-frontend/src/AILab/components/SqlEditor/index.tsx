@@ -916,7 +916,7 @@ const SqlEditor: FC<Props> = ({
               onCursorPositionChange={handleCursorPositionChange}
               height={`${aceEditorHeight}px`}
               hotkeys={hotkeys}
-              mode="sql" // added by Adham - Feb 21, 2025
+              mode="python" // added by Adham - Feb 21, 2025
             />
           )}
           {renderEditorBottomBar(showEmptyState)}

@@ -81,7 +81,7 @@ const AceEditorWrapper = ({
   const queryEditor = useQueryEditor(queryEditorId, [
     'id',
     'dbId',
-    'sql',
+    'sql', // Changed by Adham - Feb 28, 2025
     'catalog',
     'schema',
     'templateParams',

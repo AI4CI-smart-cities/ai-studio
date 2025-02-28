@@ -65,6 +65,7 @@ const onClick = (
   stopQuery = () => {},
   logAction: (name: string, payload: Record<string, any>) => void,
 ): void => {
+    alert("Running model");
   const eventName = shouldShowStopButton
     ? LOG_ACTIONS_SQLLAB_STOP_QUERY
     : LOG_ACTIONS_SQLLAB_RUN_QUERY;

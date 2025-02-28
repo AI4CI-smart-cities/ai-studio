@@ -264,8 +264,18 @@ export const SQLEditor = AsyncAceEditor([
   'ext/searchbox',
 ]);
 
+export const PythonEditor = AsyncAceEditor([
+  'mode/python',
+  'theme/github',
+  'ext/language_tools',
+  'ext/searchbox',
+]);
+
 export const FullSQLEditor = AsyncAceEditor(
-  ['mode/sql', 'theme/github', 'ext/language_tools', 'ext/searchbox'],
+  ['mode/sql',
+//   Added by Adham - Feb 28, 2025
+   'mode/python',
+   'theme/github', 'ext/language_tools', 'ext/searchbox'],
   {
     // a custom placeholder in SQL lab for less jumpy re-renders
     placeholder: () => {

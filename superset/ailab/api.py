@@ -69,11 +69,11 @@ config = app.config
 logger = logging.getLogger(__name__)
 
 
-class SqlLabRestApi(BaseSupersetApi):
+class AiLabRestApi(BaseSupersetApi):
     method_permission_name = MODEL_API_RW_METHOD_PERMISSION_MAP
     datamodel = SQLAInterface(Query)
 
-    resource_name = "sqllab"
+    resource_name = "ailab"
     allow_browser_login = True
 
     class_permission_name = "SQLLab"
@@ -499,7 +499,7 @@ class SqlLabRestApi(BaseSupersetApi):
         execution_context: SqlJsonExecutionContext, log_params: Optional[dict[str, Any]]
     ) -> ExecuteSqlCommand:
         query_dao = QueryDAO()
-        sql_json_executor = SqlLabRestApi._create_sql_json_executor(
+        sql_json_executor = AiLabRestApi._create_sql_json_executor(
             execution_context, query_dao
         )
         execution_context_convertor = ExecutionContextConvertor()

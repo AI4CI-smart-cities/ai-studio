@@ -350,7 +350,8 @@ export function runQuery(query, runPreviewOnly) {
 
     const search = window.location.search || '';
     return SupersetClient.post({
-      endpoint: `/api/v1/sqllab/execute/${search}`,
+//      endpoint: `/api/v1/sqllab/execute/${search}`,
+      endpoint: `/api/v1/ailab/run_python_code/${search}`,
       body: JSON.stringify(postPayload),
       headers: { 'Content-Type': 'application/json' },
       parseMethod: 'json-bigint',

@@ -314,6 +314,9 @@ class SupersetSecurityManager(  # pylint: disable=too-many-public-methods
         ("can_get_results", "SQLLab"),
         ("can_execute_sql_query", "SQLLab"),
         ("can_estimate_query_cost", "SQL Lab"),
+        # Add start - Adham - March 03, 2025
+        ("can_run_python_code", "AI Lab"),
+        # Add end - Adham - March 03, 2025
         ("can_export_csv", "SQLLab"),
         ("can_read", "SQLLab"),
         ("can_sqllab_history", "Superset"),

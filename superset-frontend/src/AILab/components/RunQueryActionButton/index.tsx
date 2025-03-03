@@ -64,8 +64,11 @@ const onClick = (
   runQuery: (c?: boolean) => void = () => undefined,
   stopQuery = () => {},
   logAction: (name: string, payload: Record<string, any>) => void,
+  sqlContent: string, // Added by Adham Feb 28, 2025
 ): void => {
-    alert("Running model");
+
+    alert(sqlContent);
+
   const eventName = shouldShowStopButton
     ? LOG_ACTIONS_SQLLAB_STOP_QUERY
     : LOG_ACTIONS_SQLLAB_RUN_QUERY;
@@ -137,7 +140,7 @@ const RunQueryActionButton = ({
       <ButtonComponent
         data-test="run-query-action"
         onClick={() =>
-          onClick(shouldShowStopBtn, allowAsync, runQuery, stopQuery, logAction)
+          onClick(shouldShowStopBtn, allowAsync, runQuery, stopQuery, logAction, sqlContent)
         }
         disabled={isDisabled}
         tooltip={
